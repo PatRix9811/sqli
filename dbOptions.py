@@ -12,7 +12,7 @@ class DB:
 		self.activeDb = sqlite3.connect(self.nameDb+".db")
 		self.cursorDb = self.activeDb.cursor()
 		try:
-			self.cursorDb.execute("CREATE TABLE {} (Imię text,Nazwisko text,Wiek text)".format(self.nameDb))
+			self.cursorDb.execute("CREATE TABLE {} (Id INTEGER PRIMARY KEY AUTOINCREMENT,Imię text,Nazwisko text,Wiek text)".format(self.nameDb))
 			self.activeDb.commit()
 		except:
 			return
@@ -33,7 +33,7 @@ class DB:
 		
 	def addRecord(self,un,us,ua):
 		try:
-			query ="INSERT INTO {} VALUES ('{}','{}','{}')".format(self.nameDb,un,us,ua)
+			query ="INSERT INTO {} VALUES (NULL,'{}','{}','{}')".format(self.nameDb,un,us,ua)
 			self.cursorDb.execute(query)
 			self.activeDb.commit()
 		except:

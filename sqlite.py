@@ -8,13 +8,14 @@ def destroy():
 def reloadTable():
 	data=base.getData()
 	e=0
-	l1=Label(frame,text="Imię",width=15).grid(row=2,column=0)
-	l2=Label(frame,text="Nazwisko",width=15).grid(row=2,column=1)
-	l3=Label(frame,text="Wiek",width=15).grid(row=2,column=2)
+	l0=Label(frame,text="Id").grid(row=2,column=0)
+	l1=Label(frame,text="Imię",width=15).grid(row=2,column=1)
+	l2=Label(frame,text="Nazwisko",width=15).grid(row=2,column=2)
+	l3=Label(frame,text="Wiek",width=15).grid(row=2,column=3)
 	if len(data)>0:
-		r=int(len(data)/3)
+		r=int(len(data)/4)
 		for i in range(r):  # Rows
-			for j in range(3):  # Columns
+			for j in range(4):  # Columns
 				b = Entry(frame)
 				b.grid(row=i+3, column=j)
 				b.insert("0",str(data[e]))
@@ -49,7 +50,7 @@ def addRec():
 		reloadTable()
 		
 def delRec():
-	opotions=("Imię","Nazwisko","Wiek") 
+	opotions=("Id","Imię","Nazwisko","Wiek") 
 	h1=record.curselection()
 	lb = opotions[h1[0]]
 	e=where.get()
@@ -82,10 +83,11 @@ disconnect = Button(frame1,text="Rozłącz",command=disc)
 addRecord = Button(frame1,text="Nowy Rekord",command=addRec)
 deleteRecord = Button(frame1,text="Usuń Rekord gdzie ->",command=delRec)
 
-record = Listbox(frame1,height=3)
-record.insert(1,"Imię")
-record.insert(2,"Nazwisko")
-record.insert(3,"Wiek")
+record = Listbox(frame1,height=4)
+record.insert(1,"Id")
+record.insert(2,"Imię")
+record.insert(3,"Nazwisko")
+record.insert(4,"Wiek")
 
 l=Label(frame1,text="=")
 where = Entry(frame1)
